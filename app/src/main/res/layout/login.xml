@@ -11,6 +11,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1348" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/login_login_title_top_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3328" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_title_container"
         android:layout_width="0dp"
@@ -44,5 +51,21 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/login_login_title"
+        android:layout_width="@dimen/login_login_title_width"
+        android:layout_height="@dimen/login_login_title_height"
+        android:fontFamily="@font/jura_bold"
+        android:text="@string/login_login_title_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/login_login_title_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/login_login_title_top_guideline"
+        app:layout_constraintVertical_bias="0" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
