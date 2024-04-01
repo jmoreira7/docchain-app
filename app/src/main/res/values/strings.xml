@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DocChain</string>
+    <string name="login_title_container_title_text">DocChain</string>
     <string name="login_login_title_text">Login</string>
 </resources>
