@@ -1,5 +1,6 @@
 package com.ufabc.docchain
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -13,5 +14,10 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.login)
+
+        binding.loginRegisterButton.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
+        }
     }
 }
