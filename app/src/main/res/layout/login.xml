@@ -62,11 +62,12 @@
 
     <TextView
         android:id="@+id/login_login_title"
-        android:layout_width="@dimen/login_login_title_width"
+        android:layout_width="0dp"
         android:layout_height="@dimen/login_login_title_height"
         android:fontFamily="@font/jura_bold"
         android:text="@string/login_login_title_text"
         android:textColor="@color/black"
+        android:gravity="center"
         android:textSize="@dimen/login_login_title_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,6 +121,19 @@
             android:textColor="@color/star_dust" />
 
     </FrameLayout>
+
+    <Button
+        android:id="@+id/login_login_button"
+        android:layout_width="@dimen/login_login_button_width"
+        android:layout_height="@dimen/login_login_button_height"
+        android:fontFamily="@font/jura_bold"
+        android:text="@string/login_login_button_text"
+        android:background="@drawable/button_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_password_input_field"
+        app:layout_constraintVertical_bias="0.7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
