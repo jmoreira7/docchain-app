@@ -14,6 +14,6 @@
     <string name="login_register_question_text">Ainda não tem uma conta?</string>
     <string name="login_register_button_text">Registre-se</string>
     <string name="register_back_button_text">Voltar</string>
-    <string name="login_activity_email_validation_empty_message">E-mail cannot be empty.</string>
-    <string name="login_activity_password_validation_empty_message">Password cannot be empty.</string>
+    <string name="login_activity_email_validation_empty_message">Insira um e-mail.</string>
+    <string name="login_activity_password_validation_empty_message">Insira uma senha.</string>
 </resources>
