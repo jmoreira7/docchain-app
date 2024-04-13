@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.ufabc.docchain.R
 import com.ufabc.docchain.databinding.RegisterBinding
 
-class Register : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: RegisterBinding
 

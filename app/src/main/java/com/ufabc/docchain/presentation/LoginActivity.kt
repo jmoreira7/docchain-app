@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.ufabc.docchain.R
 import com.ufabc.docchain.databinding.LoginBinding
 
-class Login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: LoginBinding
 
@@ -22,7 +22,7 @@ class Login : AppCompatActivity() {
 
     private fun setupViews() {
         binding.loginRegisterButton.setOnClickListener {
-            val intent = Intent(this, Register::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
