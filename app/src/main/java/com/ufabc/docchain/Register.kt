@@ -1,5 +1,6 @@
 package com.ufabc.docchain
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,5 +17,13 @@ class Register : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.register)
+
+        setupViews()
+    }
+
+    private fun setupViews() {
+        binding.registerBackButton.setOnClickListener {
+            finish()
+        }
     }
 }

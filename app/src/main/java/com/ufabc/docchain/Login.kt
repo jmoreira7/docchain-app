@@ -15,6 +15,10 @@ class Login : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.login)
 
+        setupViews()
+    }
+
+    private fun setupViews() {
         binding.loginRegisterButton.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
