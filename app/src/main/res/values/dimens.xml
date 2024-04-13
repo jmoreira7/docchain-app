@@ -7,7 +7,7 @@
     <dimen name="login_login_title_text_size">30sp</dimen>
     <dimen name="login_input_field_width">228dp</dimen>
     <dimen name="login_input_field_height">38dp</dimen>
-    <dimen name="login_user_input_field_text_width">39dp</dimen>
+    <dimen name="login_user_input_field_text_width">60dp</dimen>
     <dimen name="login_user_input_field_text_height">19dp</dimen>
     <dimen name="login_input_field_text_margin_start">20dp</dimen>
     <dimen name="login_input_field_text_margin_top">10dp</dimen>
