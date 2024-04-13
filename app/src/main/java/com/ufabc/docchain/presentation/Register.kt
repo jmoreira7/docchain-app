@@ -1,12 +1,9 @@
-package com.ufabc.docchain
+package com.ufabc.docchain.presentation
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
+import com.ufabc.docchain.R
 import com.ufabc.docchain.databinding.RegisterBinding
 
 class Register : AppCompatActivity() {

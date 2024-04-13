@@ -1,10 +1,11 @@
-package com.ufabc.docchain
+package com.ufabc.docchain.presentation
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.ufabc.docchain.R
 import com.ufabc.docchain.databinding.LoginBinding
 
 class Login : AppCompatActivity() {
