@@ -80,7 +80,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_user_text_input"
             android:layout_width="@dimen/login_user_text_input_width"
-            android:layout_height="@dimen/login_user_text_input_height"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,17 +91,18 @@
                 android:id="@+id/login_user_text_input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/silver"
                 android:fontFamily="@font/jura_bold"
                 android:hint="@string/login_user_text_input_edit_text_hint"
-                android:textColor="@color/star_dust" />
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textColorHint="@color/star_dust" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_password_text_input"
             android:layout_width="@dimen/login_password_text_input_width"
-            android:layout_height="@dimen/login_password_text_input_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/login_password_text_input_margin_top"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -113,10 +114,11 @@
                 android:id="@+id/login_password_text_input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/silver"
                 android:fontFamily="@font/jura_bold"
                 android:hint="@string/login_password_text_input_edit_text_hint"
-                android:textColor="@color/star_dust" />
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColorHint="@color/star_dust" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,12 +142,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/jura_bold"
             android:text="@string/login_register_button_text"
-            android:textSize="@dimen/login_register_button_text_size"
             android:textColor="@color/warm_blue"
-            app:layout_constraintTop_toBottomOf="@id/login_register_question"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/login_register_button_text_size"
             app:layout_constraintBottom_toTopOf="@id/login_login_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_register_question"
             app:layout_constraintVertical_bias="0.1" />
 
 
