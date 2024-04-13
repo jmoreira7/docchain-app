@@ -89,17 +89,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/register_input_fields_top_guideline" />
-
-        <FrameLayout
-            android:id="@+id/register_name_input_field"
-            android:layout_width="@dimen/register_user_input_field_width"
-            android:layout_height="@dimen/register_user_input_field_height"
-            android:background="@color/silver"
-            app:layout_constraintBottom_toBottomOf="@id/register_id"
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_name_text_input"
+            android:layout_width="@dimen/register_text_input_width"
+            android:layout_height="@dimen/register_text_input_height"
+            app:layout_constraintBottom_toTopOf="@id/register_id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/register_name"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_name_text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/silver"
+                android:fontFamily="@font/jura_bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/register_id"
@@ -113,19 +121,26 @@
             android:textSize="@dimen/register_id_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/register_name_input_field" />
+            app:layout_constraintTop_toBottomOf="@id/register_name_text_input" />
 
-
-        <FrameLayout
-            android:id="@+id/register_id_input_field"
-            android:layout_width="@dimen/register_user_input_field_width"
-            android:layout_height="@dimen/register_user_input_field_height"
-            android:background="@color/silver"
-            app:layout_constraintBottom_toBottomOf="@id/register_email"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_id_text_input"
+            android:layout_width="@dimen/register_text_input_width"
+            android:layout_height="@dimen/register_text_input_height"
+            app:layout_constraintBottom_toTopOf="@id/register_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/register_id"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_id_text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/silver"
+                android:fontFamily="@font/jura_bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/register_email"
@@ -139,18 +154,26 @@
             android:textSize="@dimen/register_email_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/register_id_input_field" />
+            app:layout_constraintTop_toBottomOf="@id/register_id_text_input" />
 
-        <FrameLayout
-            android:id="@+id/register_email_input_field"
-            android:layout_width="@dimen/register_email_input_field_width"
-            android:layout_height="@dimen/register_email_input_field_height"
-            android:background="@color/silver"
-            app:layout_constraintBottom_toBottomOf="@id/register_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_email_text_input"
+            android:layout_width="@dimen/register_text_input_width"
+            android:layout_height="@dimen/register_text_input_height"
+            app:layout_constraintBottom_toTopOf="@id/register_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/register_email"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_email_text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/silver"
+                android:fontFamily="@font/jura_bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/register_password"
@@ -164,18 +187,26 @@
             android:textSize="@dimen/register_password_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/register_email_input_field" />
+            app:layout_constraintTop_toBottomOf="@id/register_email_text_input" />
 
-        <FrameLayout
-            android:id="@+id/register_password_input_field"
-            android:layout_width="@dimen/register_password_input_field_width"
-            android:layout_height="@dimen/register_password_input_field_height"
-            android:background="@color/silver"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password_text_input"
+            android:layout_width="@dimen/register_text_input_width"
+            android:layout_height="@dimen/register_text_input_height"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/register_password"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_password_text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/silver"
+                android:fontFamily="@font/jura_bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/register_register_button"
@@ -187,7 +218,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/register_password_input_field"
+            app:layout_constraintTop_toBottomOf="@id/register_password_text_input"
             app:layout_constraintVertical_bias="0.7" />
 
 
