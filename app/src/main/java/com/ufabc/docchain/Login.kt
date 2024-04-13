@@ -1,14 +1,17 @@
 package com.ufabc.docchain
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.databinding.DataBindingUtil
+import com.ufabc.docchain.databinding.LoginBinding
 
 class Login : AppCompatActivity() {
+
+    private lateinit var binding: LoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.login)
     }
 }
