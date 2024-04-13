@@ -11,4 +11,6 @@
     <string name="login_login_button_text">Entrar</string>
     <string name="login_user_text_input_edit_text_hint">E-mail</string>
     <string name="login_password_text_input_edit_text_hint">Senha</string>
+    <string name="login_register_question_text">Ainda não tem uma conta?</string>
+    <string name="login_register_button_text">Registre-se</string>
 </resources>
