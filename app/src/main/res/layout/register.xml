@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/login_title_container_title"
-            android:layout_width="@dimen/title_container_title_width"
+            android:layout_width="0dp"
             android:layout_height="@dimen/title_container_title_height"
             android:fontFamily="@font/julius_sans_one"
             android:text="@string/title_container_title_text"
