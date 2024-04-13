@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">DocChain</string>
     <string name="title_container_title_text">DocChain</string>
-    <string name="login_login_title_text">Login</string>
-    <string name="login_user_input_field_text">User</string>
-    <string name="login_password_input_field_text">Password</string>
-    <string name="register_register_title_text">Register</string>
-    <string name="register_name_text">Name</string>
-    <string name="register_id_text">CPF / RG / Passport</string>
+    <string name="login_login_title_text">Acesso</string>
+    <string name="login_user_input_field_text">Usuário</string>
+    <string name="login_password_input_field_text">Senha</string>
+    <string name="register_register_title_text">Registro</string>
+    <string name="register_name_text">Nome</string>
+    <string name="register_id_text">CPF / RG / Passaporte</string>
     <string name="register_email_text">E-mail</string>
-    <string name="register_password_text">Password</string>
-    <string name="register_register_button_text">Register</string>
+    <string name="register_password_text">Senha</string>
+    <string name="register_register_button_text">Enviar</string>
+    <string name="login_login_button_text">Entrar</string>
 </resources>
