@@ -89,11 +89,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/register_input_fields_top_guideline" />
-        
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_name_text_input"
             android:layout_width="@dimen/register_text_input_width"
-            android:layout_height="@dimen/register_text_input_height"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toTopOf="@id/register_id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,9 +104,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_name_text_input_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/silver"
-                android:fontFamily="@font/jura_bold" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jura_bold"
+                android:inputType="textPersonName"
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,7 +128,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_id_text_input"
             android:layout_width="@dimen/register_text_input_width"
-            android:layout_height="@dimen/register_text_input_height"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toTopOf="@id/register_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -137,8 +140,9 @@
                 android:id="@+id/register_id_text_input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/silver"
-                android:fontFamily="@font/jura_bold" />
+                android:fontFamily="@font/jura_bold"
+                android:inputType="number"
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,7 +163,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_email_text_input"
             android:layout_width="@dimen/register_text_input_width"
-            android:layout_height="@dimen/register_text_input_height"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toTopOf="@id/register_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -170,8 +175,9 @@
                 android:id="@+id/register_email_text_input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/silver"
-                android:fontFamily="@font/jura_bold" />
+                android:fontFamily="@font/jura_bold"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -192,7 +198,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_password_text_input"
             android:layout_width="@dimen/register_text_input_width"
-            android:layout_height="@dimen/register_text_input_height"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -203,8 +210,9 @@
                 android:id="@+id/register_password_text_input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/silver"
-                android:fontFamily="@font/jura_bold" />
+                android:fontFamily="@font/jura_bold"
+                android:inputType="textPassword"
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
