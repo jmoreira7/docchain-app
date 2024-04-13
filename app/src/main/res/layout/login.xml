@@ -44,13 +44,13 @@
 
         <TextView
             android:id="@+id/login_title_container_title"
-            android:layout_width="@dimen/login_title_container_title_width"
-            android:layout_height="@dimen/login_title_container_title_height"
+            android:layout_width="@dimen/title_container_title_width"
+            android:layout_height="@dimen/title_container_title_height"
             android:fontFamily="@font/julius_sans_one"
-            android:text="@string/login_title_container_title_text"
+            android:text="@string/title_container_title_text"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="@dimen/login_title_container_title_text_size"
+            android:textSize="@dimen/title_container_title_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
