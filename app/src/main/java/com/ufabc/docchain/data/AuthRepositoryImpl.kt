@@ -15,12 +15,7 @@ class AuthRepositoryImpl : AuthRepositoryI {
         val authUid = authMechanism.createUser(email, password)
 
         return if (authUid.isNotEmpty()) {
-            val user = User(
-                name = name,
-                id = id,
-                email = email,
-                authUid = authUid
-            )
+            val user = UserMapper.fromParams(name, id, email, authUid)
 
             cloudDbMechanism.insertUser(user)
         } else {
