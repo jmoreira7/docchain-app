@@ -3,7 +3,8 @@ package com.ufabc.docchain.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ufabc.docchain.data.FirebaseAuthRepository
+import com.ufabc.docchain.data.AuthRepositoryI
+import com.ufabc.docchain.data.FirebaseAuthMechanism
 import com.ufabc.docchain.presentation.ActivityStatus.LOADING
 import com.ufabc.docchain.presentation.ActivityStatus.NORMAL
 import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowCreateUserFailToast
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 
 class RegisterViewModel() : ViewModel(), RegisterI {
 
-    private val authRepository: FirebaseAuthRepository = FirebaseAuthRepository()
+    private val authRepository: AuthRepositoryI = FirebaseAuthMechanism()
 
     private val _state = MutableLiveData<RegisterViewModelState>()
 

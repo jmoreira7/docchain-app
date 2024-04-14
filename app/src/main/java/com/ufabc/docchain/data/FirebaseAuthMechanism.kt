@@ -6,7 +6,7 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class FirebaseAuthRepository : AuthRepositoryI {
+class FirebaseAuthMechanism : AuthRepositoryI {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
