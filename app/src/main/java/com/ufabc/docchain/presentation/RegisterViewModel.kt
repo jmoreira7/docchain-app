@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ufabc.docchain.data.FirebaseAuthRepository
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showCreateUserFailDialog
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showCreateUserSuccessDialog
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,14 +18,39 @@ class RegisterViewModel() : ViewModel(), RegisterActivity.RegisterInterface {
     val action: LiveData<RegisterViewModelAction>
         get() = _action
 
-    override fun createUser(email: String, password: String) {
+    override fun submitRegistration(name: String, id: String, email: String, password: String) {
+        val success = validateInputs(name, id, email, password)
+
+        if (success) {
+            createUser(email, password)
+        }
+    }
+
+    private fun validateInputs(name: String, id: String, email: String, password: String) : Boolean {
+        return if (name.isEmpty()) {
+            postAction(showEmptyNameInputToast)
+            false
+        } else if (id.isEmpty()) {
+            postAction(showEmptyIdInputToast)
+            false
+        } else if (email.isEmpty()) {
+            postAction(showEmptyEmailInputToast)
+            false
+        } else if (password.isEmpty()) {
+            postAction(showEmptyPasswordInputToast)
+            false
+        } else
+            true
+    }
+
+    private fun createUser(email: String, password: String) {
         CoroutineScope(Dispatchers.Main).launch {
             val success = authRepository.createUser(email, password)
 
             if (success) {
-                postAction(showCreateUserSuccessDialog)
+                postAction(showCreateUserSuccessToast)
             } else {
-                postAction(showCreateUserFailDialog)
+                postAction(showCreateUserFailToast)
             }
         }
     }
@@ -36,9 +60,12 @@ class RegisterViewModel() : ViewModel(), RegisterActivity.RegisterInterface {
     }
 
     sealed class RegisterViewModelAction() {
-        object showCreateUserSuccessDialog : RegisterViewModelAction()
-
-        object showCreateUserFailDialog : RegisterViewModelAction()
+        object showCreateUserSuccessToast : RegisterViewModelAction()
+        object showCreateUserFailToast : RegisterViewModelAction()
+        object showEmptyNameInputToast : RegisterViewModelAction()
+        object showEmptyIdInputToast : RegisterViewModelAction()
+        object showEmptyEmailInputToast : RegisterViewModelAction()
+        object showEmptyPasswordInputToast : RegisterViewModelAction()
     }
 
 }
