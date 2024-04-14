@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import com.ufabc.docchain.data.FirebaseAuthRepository
 import com.ufabc.docchain.presentation.ActivityStatus.LOADING
 import com.ufabc.docchain.presentation.ActivityStatus.NORMAL
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserFailToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserSuccessToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyEmailInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyIdInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyNameInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyPasswordInputToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowCreateUserFailToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowCreateUserSuccessToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowEmptyEmailInputToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowEmptyIdInputToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowEmptyNameInputToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowEmptyPasswordInputToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,6 +29,10 @@ class RegisterViewModel() : ViewModel(), RegisterI {
 
     val action: LiveData<RegisterViewModelAction>
         get() = _action
+
+    init {
+        _state.postValue(RegisterViewModelState())
+    }
 
     override fun submitRegistration(name: String, id: String, email: String, password: String) {
         val success = validateInputs(name, id, email, password)
@@ -57,8 +61,7 @@ class RegisterViewModel() : ViewModel(), RegisterI {
 
     private fun createUser(email: String, password: String) {
         CoroutineScope(Dispatchers.Main).launch {
-            var newState = _state.value?.copy(registerStatus = LOADING)
-            postState(newState)
+            updateRegisterStatus(LOADING)
 
             val success = authRepository.createUser(email, password)
 
@@ -68,9 +71,15 @@ class RegisterViewModel() : ViewModel(), RegisterI {
                 postAction(ShowCreateUserFailToast)
             }
 
-            newState = _state.value?.copy(registerStatus = NORMAL)
-            postState(newState)
+            updateRegisterStatus(NORMAL)
         }
+    }
+
+    private fun updateRegisterStatus(status: ActivityStatus) {
+        val currentState = _state.value ?: RegisterViewModelState()
+        val newState = currentState.copy(registerStatus = status)
+
+        postState(newState)
     }
 
     private fun postState(newState: RegisterViewModelState?) {
@@ -82,14 +91,4 @@ class RegisterViewModel() : ViewModel(), RegisterI {
     private fun postAction(action: RegisterViewModelAction) {
         _action.value = action
     }
-
-    sealed class RegisterViewModelAction() {
-        object ShowCreateUserSuccessToast : RegisterViewModelAction()
-        object ShowCreateUserFailToast : RegisterViewModelAction()
-        object ShowEmptyNameInputToast : RegisterViewModelAction()
-        object ShowEmptyIdInputToast : RegisterViewModelAction()
-        object ShowEmptyEmailInputToast : RegisterViewModelAction()
-        object ShowEmptyPasswordInputToast : RegisterViewModelAction()
-    }
-
 }

@@ -9,13 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.ufabc.docchain.R
 import com.ufabc.docchain.databinding.RegisterBinding
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserFailToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserSuccessToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyEmailInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyIdInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyNameInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyPasswordInputToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowCreateUserFailToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowCreateUserSuccessToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowEmptyEmailInputToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowEmptyIdInputToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowEmptyNameInputToast
+import com.ufabc.docchain.presentation.RegisterViewModelAction.ShowEmptyPasswordInputToast
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -29,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.register)
 
         setupViews()
-        setupViewModel()
+        setupViewModelEvents()
     }
 
     private fun setupViews() {
@@ -47,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupViewModel() {
+    private fun setupViewModelEvents() {
         viewModel.state.observe(this) { state ->
             handleViewModelState(state)
         }
