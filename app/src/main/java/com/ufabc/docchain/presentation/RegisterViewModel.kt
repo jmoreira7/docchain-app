@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ufabc.docchain.data.FirebaseAuthRepository
+import com.ufabc.docchain.presentation.ActivityStatus.LOADING
+import com.ufabc.docchain.presentation.ActivityStatus.NORMAL
 import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserFailToast
 import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserSuccessToast
 import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyEmailInputToast
@@ -18,7 +20,12 @@ class RegisterViewModel() : ViewModel(), RegisterI {
 
     private val authRepository: FirebaseAuthRepository = FirebaseAuthRepository()
 
+    private val _state = MutableLiveData<RegisterViewModelState>()
+
     private val _action = MutableLiveData<RegisterViewModelAction>()
+
+    val state: LiveData<RegisterViewModelState>
+        get() = _state
 
     val action: LiveData<RegisterViewModelAction>
         get() = _action
@@ -50,6 +57,9 @@ class RegisterViewModel() : ViewModel(), RegisterI {
 
     private fun createUser(email: String, password: String) {
         CoroutineScope(Dispatchers.Main).launch {
+            var newState = _state.value?.copy(registerStatus = LOADING)
+            postState(newState)
+
             val success = authRepository.createUser(email, password)
 
             if (success) {
@@ -57,6 +67,15 @@ class RegisterViewModel() : ViewModel(), RegisterI {
             } else {
                 postAction(ShowCreateUserFailToast)
             }
+
+            newState = _state.value?.copy(registerStatus = NORMAL)
+            postState(newState)
+        }
+    }
+
+    private fun postState(newState: RegisterViewModelState?) {
+        if (newState != null) {
+            _state.postValue(newState)
         }
     }
 

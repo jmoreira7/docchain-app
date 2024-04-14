@@ -1,6 +1,8 @@
 package com.ufabc.docchain.presentation
 
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -46,9 +48,17 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
+        viewModel.state.observe(this) { state ->
+            handleViewModelState(state)
+        }
+
         viewModel.action.observe(this) { action ->
             handleViewModelAction(action)
         }
+    }
+
+    private fun handleViewModelState(state: RegisterViewModelState) {
+        updateRegisterActivityStatus(state.registerStatus)
     }
 
     private fun handleViewModelAction(action: RegisterViewModelAction) {
@@ -103,6 +113,20 @@ class RegisterActivity : AppCompatActivity() {
                     "Insira uma senha.",
                     Toast.LENGTH_SHORT
                 ).show()
+            }
+        }
+    }
+
+    private fun updateRegisterActivityStatus(status: ActivityStatus) {
+        when (status) {
+            ActivityStatus.NORMAL -> {
+                binding.registerRegisterButton.visibility = VISIBLE
+                binding.registerProgressBar.visibility = GONE
+            }
+
+            ActivityStatus.LOADING -> {
+                binding.registerRegisterButton.visibility = GONE
+                binding.registerProgressBar.visibility = VISIBLE
             }
         }
     }
