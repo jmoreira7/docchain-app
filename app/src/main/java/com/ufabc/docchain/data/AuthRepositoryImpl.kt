@@ -27,4 +27,18 @@ class AuthRepositoryImpl : AuthRepositoryI {
             false
         }
     }
+
+    override suspend fun retrieveUserName(authUid: String): String {
+        val userJson = cloudDbMechanism.retrieveUser(authUid).toString()
+        val user = UserMapper.fromJSON(userJson)
+
+        if (user != null) {
+            return user.name
+        }
+        return EMPTY_STRING
+    }
+
+    companion object {
+        private const val EMPTY_STRING = ""
+    }
 }
