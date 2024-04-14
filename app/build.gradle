@@ -61,6 +61,10 @@ dependencies {
     // View Model
     implementation "androidx.activity:activity-ktx"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx"
+
+    // Firebase Realtime Database
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-database")
 }
 
 // Allow references to generated code
