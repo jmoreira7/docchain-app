@@ -4,7 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ufabc.docchain.data.FirebaseAuthRepository
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.*
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showCreateUserFailToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showCreateUserSuccessToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyEmailInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyIdInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyNameInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyPasswordInputToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,7 +31,7 @@ class RegisterViewModel() : ViewModel(), RegisterActivity.RegisterInterface {
         }
     }
 
-    private fun validateInputs(name: String, id: String, email: String, password: String) : Boolean {
+    private fun validateInputs(name: String, id: String, email: String, password: String): Boolean {
         return if (name.isEmpty()) {
             postAction(showEmptyNameInputToast)
             false
