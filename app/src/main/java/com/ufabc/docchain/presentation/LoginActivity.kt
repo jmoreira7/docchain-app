@@ -2,6 +2,7 @@ package com.ufabc.docchain.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -27,7 +28,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginLoginButton.setOnClickListener {
-            validateInputs()
+            binding.loginLoginButton.visibility = View.GONE
+            binding.loginProgressBar.visibility = View.VISIBLE
         }
     }
 
