@@ -40,7 +40,7 @@ class RegisterViewModel() : ViewModel(), RegisterI {
         val success = validateInputs(name, id, email, password)
 
         if (success) {
-            createUser(email, password)
+            createUser(name, id, email, password)
         }
     }
 
@@ -61,11 +61,11 @@ class RegisterViewModel() : ViewModel(), RegisterI {
             true
     }
 
-    private fun createUser(email: String, password: String) {
+    private fun createUser(name: String, id: String, email: String, password: String) {
         CoroutineScope(Dispatchers.Main).launch {
             updateRegisterStatus(LOADING)
 
-            val success = authRepository.createUser(email, password)
+            val success = authRepository.createUser(name, id, email, password)
 
             if (success) {
                 postAction(ShowCreateUserSuccessToast)

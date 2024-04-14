@@ -11,17 +11,19 @@ class FirebaseAuthMechanism {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
-    suspend fun createUser(email: String, password: String): Boolean {
+    suspend fun createUser(email: String, password: String): String {
         return withContext(Dispatchers.IO) {
-            val deferred = CompletableDeferred<Boolean>()
+            val deferred = CompletableDeferred<String>()
+
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(LOG_TAG, "createUserWithEmail:success")
-                        deferred.complete(true)
+                        val uid = auth.currentUser?.uid ?: ""
+                        deferred.complete(uid)
                     } else {
                         Log.w(LOG_TAG, "createUserWithEmail:failure", task.exception)
-                        deferred.complete(false)
+                        deferred.complete("")
                     }
                 }
             deferred.await()
