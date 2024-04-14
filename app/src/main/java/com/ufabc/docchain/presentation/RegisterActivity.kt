@@ -8,12 +8,12 @@ import androidx.databinding.DataBindingUtil
 import com.ufabc.docchain.R
 import com.ufabc.docchain.databinding.RegisterBinding
 import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showCreateUserFailToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showCreateUserSuccessToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyEmailInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyIdInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyNameInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyPasswordInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserFailToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserSuccessToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyEmailInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyIdInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyNameInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyPasswordInputToast
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun handleViewModelAction(action: RegisterViewModelAction) {
         when (action) {
-            is showCreateUserSuccessToast -> {
+            is ShowCreateUserSuccessToast -> {
                 Toast.makeText(
                     this,
                     "Usuário criado com sucesso!",
@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
                 finish()
             }
 
-            is showCreateUserFailToast -> {
+            is ShowCreateUserFailToast -> {
                 Toast.makeText(
                     this,
                     "Criação de usuário falhou.",
@@ -73,7 +73,7 @@ class RegisterActivity : AppCompatActivity() {
                 finish()
             }
 
-            is showEmptyNameInputToast -> {
+            is ShowEmptyNameInputToast -> {
                 Toast.makeText(
                     this,
                     "Insira um nome.",
@@ -81,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
                 ).show()
             }
 
-            is showEmptyIdInputToast -> {
+            is ShowEmptyIdInputToast -> {
                 Toast.makeText(
                     this,
                     "Insira uma identificação.",
@@ -89,7 +89,7 @@ class RegisterActivity : AppCompatActivity() {
                 ).show()
             }
 
-            is showEmptyEmailInputToast -> {
+            is ShowEmptyEmailInputToast -> {
                 Toast.makeText(
                     this,
                     "Insira um e-mail.",
@@ -97,7 +97,7 @@ class RegisterActivity : AppCompatActivity() {
                 ).show()
             }
 
-            is showEmptyPasswordInputToast -> {
+            is ShowEmptyPasswordInputToast -> {
                 Toast.makeText(
                     this,
                     "Insira uma senha.",

@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ufabc.docchain.data.FirebaseAuthRepository
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showCreateUserFailToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showCreateUserSuccessToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyEmailInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyIdInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyNameInputToast
-import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.showEmptyPasswordInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserFailToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowCreateUserSuccessToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyEmailInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyIdInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyNameInputToast
+import com.ufabc.docchain.presentation.RegisterViewModel.RegisterViewModelAction.ShowEmptyPasswordInputToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,16 +33,16 @@ class RegisterViewModel() : ViewModel(), RegisterI {
 
     private fun validateInputs(name: String, id: String, email: String, password: String): Boolean {
         return if (name.isEmpty()) {
-            postAction(showEmptyNameInputToast)
+            postAction(ShowEmptyNameInputToast)
             false
         } else if (id.isEmpty()) {
-            postAction(showEmptyIdInputToast)
+            postAction(ShowEmptyIdInputToast)
             false
         } else if (email.isEmpty()) {
-            postAction(showEmptyEmailInputToast)
+            postAction(ShowEmptyEmailInputToast)
             false
         } else if (password.isEmpty()) {
-            postAction(showEmptyPasswordInputToast)
+            postAction(ShowEmptyPasswordInputToast)
             false
         } else
             true
@@ -53,9 +53,9 @@ class RegisterViewModel() : ViewModel(), RegisterI {
             val success = authRepository.createUser(email, password)
 
             if (success) {
-                postAction(showCreateUserSuccessToast)
+                postAction(ShowCreateUserSuccessToast)
             } else {
-                postAction(showCreateUserFailToast)
+                postAction(ShowCreateUserFailToast)
             }
         }
     }
@@ -65,12 +65,12 @@ class RegisterViewModel() : ViewModel(), RegisterI {
     }
 
     sealed class RegisterViewModelAction() {
-        object showCreateUserSuccessToast : RegisterViewModelAction()
-        object showCreateUserFailToast : RegisterViewModelAction()
-        object showEmptyNameInputToast : RegisterViewModelAction()
-        object showEmptyIdInputToast : RegisterViewModelAction()
-        object showEmptyEmailInputToast : RegisterViewModelAction()
-        object showEmptyPasswordInputToast : RegisterViewModelAction()
+        object ShowCreateUserSuccessToast : RegisterViewModelAction()
+        object ShowCreateUserFailToast : RegisterViewModelAction()
+        object ShowEmptyNameInputToast : RegisterViewModelAction()
+        object ShowEmptyIdInputToast : RegisterViewModelAction()
+        object ShowEmptyEmailInputToast : RegisterViewModelAction()
+        object ShowEmptyPasswordInputToast : RegisterViewModelAction()
     }
 
 }
