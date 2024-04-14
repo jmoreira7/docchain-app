@@ -6,12 +6,12 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class FirebaseAuthMechanism : AuthRepositoryI {
+class FirebaseAuthMechanism {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
-    override suspend fun createUser(email: String, password: String): Boolean {
+    suspend fun createUser(email: String, password: String): Boolean {
         return withContext(Dispatchers.IO) {
             val deferred = CompletableDeferred<Boolean>()
             auth.createUserWithEmailAndPassword(email, password)

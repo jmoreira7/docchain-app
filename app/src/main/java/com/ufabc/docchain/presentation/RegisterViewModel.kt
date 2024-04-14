@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ufabc.docchain.data.AuthRepositoryI
+import com.ufabc.docchain.data.AuthRepositoryImpl
 import com.ufabc.docchain.data.FirebaseAuthMechanism
 import com.ufabc.docchain.presentation.ActivityStatus.LOADING
 import com.ufabc.docchain.presentation.ActivityStatus.NORMAL
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
 
 class RegisterViewModel() : ViewModel(), RegisterI {
 
-    private val authRepository: AuthRepositoryI = FirebaseAuthMechanism()
+    private val authRepository: AuthRepositoryI = AuthRepositoryImpl()
 
     private val _state = MutableLiveData<RegisterViewModelState>()
 
