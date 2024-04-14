@@ -14,7 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RegisterViewModel() : ViewModel(), RegisterActivity.RegisterInterface {
+class RegisterViewModel() : ViewModel(), RegisterI {
 
     private val authRepository: FirebaseAuthRepository = FirebaseAuthRepository()
 

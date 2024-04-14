@@ -106,8 +106,4 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-
-    interface RegisterInterface {
-        fun submitRegistration(name: String, id: String, email: String, password: String)
-    }
 }
