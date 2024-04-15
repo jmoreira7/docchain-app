@@ -14,6 +14,8 @@ import com.ufabc.docchain.presentation.ActivityStatus.LOADING
 import com.ufabc.docchain.presentation.ActivityStatus.NORMAL
 import com.ufabc.docchain.presentation.LoginViewModelAction.ShowEmptyEmailInputToast
 import com.ufabc.docchain.presentation.LoginViewModelAction.ShowEmptyPasswordInputToast
+import com.ufabc.docchain.presentation.LoginViewModelAction.ShowFailAuthenticationToast
+import com.ufabc.docchain.presentation.LoginViewModelAction.StartMenuActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -76,6 +78,28 @@ class LoginActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+
+            is ShowFailAuthenticationToast -> {
+                Toast.makeText(
+                    this,
+                    getString(R.string.login_activity_fail_authentication_text),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            is StartMenuActivity -> {
+                Toast.makeText(
+                    this,
+                    getString(R.string.login_activity_authentication_success),
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                val intent = Intent(this, MenuActivity::class.java)
+
+                intent.putExtra(MENU_ACTIVITY_INTENT_TAG, action.loggedInUserName)
+
+                startActivity(intent)
+            }
         }
     }
 
@@ -91,5 +115,9 @@ class LoginActivity : AppCompatActivity() {
                 binding.loginProgressBar.visibility = VISIBLE
             }
         }
+    }
+
+    companion object {
+        const val MENU_ACTIVITY_INTENT_TAG = "LoggedInUserName"
     }
 }

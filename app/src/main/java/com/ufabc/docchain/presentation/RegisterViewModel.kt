@@ -62,9 +62,9 @@ class RegisterViewModel() : ViewModel(), RegisterI {
     }
 
     private fun createUser(name: String, id: String, email: String, password: String) {
-        CoroutineScope(Dispatchers.Main).launch {
-            updateRegisterStatus(LOADING)
+        updateRegisterStatus(LOADING)
 
+        CoroutineScope(Dispatchers.Main).launch {
             val success = authRepository.createUser(name, id, email, password)
 
             if (success) {

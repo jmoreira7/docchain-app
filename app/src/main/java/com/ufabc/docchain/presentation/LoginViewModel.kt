@@ -1,13 +1,21 @@
 package com.ufabc.docchain.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ufabc.docchain.data.AuthRepositoryI
+import com.ufabc.docchain.data.AuthRepositoryImpl
 import com.ufabc.docchain.presentation.ActivityStatus.LOADING
-import com.ufabc.docchain.presentation.LoginViewModelAction.ShowEmptyEmailInputToast
-import com.ufabc.docchain.presentation.LoginViewModelAction.ShowEmptyPasswordInputToast
+import com.ufabc.docchain.presentation.ActivityStatus.NORMAL
+import com.ufabc.docchain.presentation.LoginViewModelAction.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel(), LoginI {
+
+    private val authRepository: AuthRepositoryI = AuthRepositoryImpl()
 
     private val _state = MutableLiveData<LoginViewModelState>()
 
@@ -28,18 +36,32 @@ class LoginViewModel : ViewModel(), LoginI {
 
         if (success) {
             updateLoginStatus(LOADING)
+            CoroutineScope(Dispatchers.Main).launch {
+                val result = authRepository.signIn(email, password)
+
+                if (result.isSuccess) {
+                    val loggedInUserName = result.getOrElse { UNKNOWN_USER_STRING }
+                    Log.d("DEBUG", "Logged in user name: [$loggedInUserName]")
+
+                    postAction(StartMenuActivity(loggedInUserName))
+                } else {
+                    postAction(ShowFailAuthenticationToast)
+                }
+
+                updateLoginStatus(NORMAL)
+            }
         }
     }
 
     private fun validateInputs(email: String, password: String): Boolean {
-        if (email.isEmpty()) {
+        return if (email.isEmpty()) {
             postAction(ShowEmptyEmailInputToast)
-            return false
+            false
         } else if (password.isEmpty()) {
             postAction(ShowEmptyPasswordInputToast)
-            return false
+            false
         } else {
-            return true
+            true
         }
     }
 
@@ -50,11 +72,19 @@ class LoginViewModel : ViewModel(), LoginI {
         postState(newState)
     }
 
-    private fun postState(newState: LoginViewModelState) {
-        _state.postValue(newState)
+    private fun postState(newState: LoginViewModelState?) {
+        if (newState != null) {
+            _state.postValue(newState)
+        }
     }
 
     private fun postAction(action: LoginViewModelAction) {
         _action.value = action
+    }
+
+    companion object {
+        private const val UNKNOWN_USER_STRING = "usuário não identificado"
+
+        private const val EMPTY_STRING = ""
     }
 }

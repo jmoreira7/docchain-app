@@ -23,8 +23,23 @@ class AuthRepositoryImpl : AuthRepositoryI {
         }
     }
 
+    override suspend fun signIn(email: String, password: String): Result<String> {
+        val result = authMechanism.signIn(email, password)
+
+        return if (result.isSuccess) {
+            val userJSON = cloudDbMechanism.retrieveUserJSON(result.getOrElse { EMPTY_STRING })
+                .toString()
+            val user = UserMapper.fromJSON(userJSON)
+            val userName = user?.name ?: EMPTY_STRING
+
+            Result.success(userName)
+        } else {
+            Result.failure(Exception("User authentication fail."))
+        }
+    }
+
     override suspend fun retrieveUserName(authUid: String): String {
-        val userJson = cloudDbMechanism.retrieveUser(authUid).toString()
+        val userJson = cloudDbMechanism.retrieveUserJSON(authUid).toString()
         val user = UserMapper.fromJSON(userJson)
 
         if (user != null) {

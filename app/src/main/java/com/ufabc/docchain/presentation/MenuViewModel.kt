@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.ufabc.docchain.data.AuthRepositoryI
 import com.ufabc.docchain.data.AuthRepositoryImpl
 
-class MenuViewModel: ViewModel() {
+class MenuViewModel: ViewModel(), MenuI {
 
     private val authRepository: AuthRepositoryI = AuthRepositoryImpl()
 
@@ -15,12 +15,9 @@ class MenuViewModel: ViewModel() {
     val state: LiveData<MenuViewModelState>
         get() = _state
 
-
-
     private fun postState(newState: MenuViewModelState?) {
         if (newState != null) {
             _state.postValue(newState)
         }
     }
-
 }

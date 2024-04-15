@@ -16,4 +16,7 @@
     <string name="register_back_button_text">Voltar</string>
     <string name="login_activity_email_validation_empty_message">Insira um e-mail.</string>
     <string name="login_activity_password_validation_empty_message">Insira uma senha.</string>
+    <string name="login_activity_fail_authentication_text">Autenticação de usuário falhou.</string>
+    <string name="menu_activity_logged_in_user_text">Conectado como %1$s.</string>
+    <string name="login_activity_authentication_success">Autenticado com sucesso!</string>
 </resources>

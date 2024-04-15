@@ -29,7 +29,7 @@ class FirebaseRTDatabaseMechanism {
         }
     }
 
-    suspend fun retrieveUser(authUid: String): Any? {
+    suspend fun retrieveUserJSON(authUid: String): Any? {
         return withContext(Dispatchers.IO) {
             val deferred = CompletableDeferred<Any?>()
 
