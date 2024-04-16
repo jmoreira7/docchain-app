@@ -36,4 +36,5 @@
     <dimen name="register_text_input_width">350dp</dimen>
     <dimen name="register_text_input_height">38dp</dimen>
     <dimen name="register_back_button_text_size">20sp</dimen>
+    <dimen name="menu_insert_exam_data_button_height">100dp</dimen>
 </resources>

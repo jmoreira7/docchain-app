@@ -5,17 +5,46 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
         <TextView
             android:id="@+id/menu_username_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/jura_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
             tools:text="Conectado como Jonas Moreira" />
+
+        <Button
+            android:id="@+id/menu_insert_exam_data_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/menu_insert_exam_data_button_height"
+            android:fontFamily="@font/jura_bold"
+            android:text="@string/menu_insert_exam_data_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menu_username_text"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <Button
+            android:id="@+id/menu_consult_exam_data_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/menu_insert_exam_data_button_height"
+            android:fontFamily="@font/jura_bold"
+            android:text="@string/menu_consult_exam_data_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menu_insert_exam_data_button"
+            app:layout_constraintVertical_bias="0.05" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
