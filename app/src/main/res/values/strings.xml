@@ -21,4 +21,14 @@
     <string name="login_activity_authentication_success">Autenticado com sucesso!</string>
     <string name="menu_insert_exam_data_button_text">Inserir Dados de Exame</string>
     <string name="menu_consult_exam_data_button_text">Consultar Exame</string>
+    <string name="insert_exam_data_title_text">Insira os dados do exame</string>
+    <string name="insert_exam_data_exam_name_text_input_edit_text_hint">Nome do exame</string>
+    <string name="insert_exam_data_id_patient_text_input_edit_text_hint">Id do paciente (CPF, RG)</string>
+    <string name="insert_exam_data_id_doctor_text_input_hint">Id do médico (CRM)</string>
+    <string name="insert_exam_data_description_text_input_edit_text_hint">Descrição</string>
+    <string name="insert_exam_data_add_exam_title_text">Anexar arquivos de exame</string>
+    <string name="insert_exam_data_exam_icon_content_description">Exam icon</string>
+    <string name="insert_exam_data_add_exam_button_content_description">Add button</string>
+    <string name="insert_exam_data_cancel_button_text">Cancelar</string>
+    <string name="insert_exam_data_apply_button_text">Enviar</string>
 </resources>

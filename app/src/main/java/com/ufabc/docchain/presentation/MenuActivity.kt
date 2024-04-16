@@ -19,6 +19,23 @@ class MenuActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.menu)
 
+        retrieveExtra()
+
+        setupViews()
+
+    }
+
+    private fun setupViews() {
+        binding.menuInsertExamDataButton.setOnClickListener {
+
+        }
+
+        binding.menuConsultExamDataButton.setOnClickListener {
+
+        }
+    }
+
+    private fun retrieveExtra() {
         val loggedInUserName = intent.getStringExtra(MENU_ACTIVITY_INTENT_TAG)
 
         binding.menuUsernameText.text =
