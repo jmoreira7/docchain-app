@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.ufabc.docchain.data.AuthRepositoryI
 import com.ufabc.docchain.data.AuthRepositoryImpl
 
-class MenuViewModel: ViewModel(), MenuI {
+class MenuViewModel: ViewModel(), MenuEvent {
 
     private val authRepository: AuthRepositoryI = AuthRepositoryImpl()
 

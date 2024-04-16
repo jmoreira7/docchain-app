@@ -13,7 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel(), LoginI {
+class LoginViewModel : ViewModel(), LoginEvent {
 
     private val authRepository: AuthRepositoryI = AuthRepositoryImpl()
 

@@ -1,5 +1,5 @@
 package com.ufabc.docchain.presentation
 
-interface LoginI {
+interface LoginEvent {
     fun submitLogin(email: String, password: String)
 }
