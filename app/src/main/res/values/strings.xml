@@ -29,6 +29,6 @@
     <string name="insert_exam_data_add_exam_title_text">Anexar arquivos de exame</string>
     <string name="insert_exam_data_exam_icon_content_description">Exam icon</string>
     <string name="insert_exam_data_add_exam_button_content_description">Add button</string>
-    <string name="insert_exam_data_cancel_button_text">Cancelar</string>
+    <string name="insert_exam_data_back_button_text">Voltar</string>
     <string name="insert_exam_data_apply_button_text">Enviar</string>
 </resources>
