@@ -1,5 +1,6 @@
 package com.ufabc.docchain.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +28,9 @@ class MenuActivity : AppCompatActivity() {
 
     private fun setupViews() {
         binding.menuInsertExamDataButton.setOnClickListener {
+            val intent = Intent(this, InsertExamActivity::class.java)
 
+            startActivity(intent)
         }
 
         binding.menuConsultExamDataButton.setOnClickListener {

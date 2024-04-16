@@ -155,6 +155,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/insert_exam_data_exam_icon_content_description"
             android:src="@drawable/ic_exam"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.07"
