@@ -41,7 +41,7 @@ class MenuActivity : AppCompatActivity() {
     private fun retrieveExtra() {
         val loggedInUserName = intent.getStringExtra(MENU_ACTIVITY_INTENT_TAG)
 
-        binding.menuUsernameText.text =
-            getString(R.string.menu_activity_logged_in_user_text, loggedInUserName)
+//        binding.menuUsernameText.text =
+//            getString(R.string.menu_activity_logged_in_user_text, loggedInUserName)
     }
 }
