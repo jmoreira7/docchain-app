@@ -21,9 +21,7 @@ class MenuActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.menu)
 
         retrieveExtra()
-
         setupViews()
-
     }
 
     private fun setupViews() {
@@ -39,9 +37,10 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun retrieveExtra() {
-        val loggedInUserName = intent.getStringExtra(MENU_ACTIVITY_INTENT_TAG)
+        val userAuthId = intent.getStringExtra(MENU_ACTIVITY_INTENT_TAG)
 
-//        binding.menuUsernameText.text =
-//            getString(R.string.menu_activity_logged_in_user_text, loggedInUserName)
+        userAuthId?.let {
+            viewModel.setUserAuthUid(it)
+        }
     }
 }

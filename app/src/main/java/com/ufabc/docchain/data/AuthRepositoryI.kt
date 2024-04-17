@@ -5,5 +5,5 @@ interface AuthRepositoryI {
 
     suspend fun signIn(email: String, password: String): Result<String>
 
-    suspend fun retrieveUserName(authUid: String): String
+    suspend fun retrieveUser(authUid: String): User?
 }
