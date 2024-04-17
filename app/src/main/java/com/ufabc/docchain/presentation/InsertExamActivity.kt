@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -55,10 +56,29 @@ class InsertExamActivity : AppCompatActivity() {
             }
             startActivityForResult(intent, REQUEST_CODE_PICK_PDF)
         }
+
+        binding.insertExamDataApplyButton.setOnClickListener {
+            viewModel.sendExamData(
+                this,
+                "7777777",
+                "1231298",
+                "Primeiro exame",
+                "Hello World!"
+            )
+        }
     }
 
     private fun setupViewModel() {
-        // TODO
+        viewModel.action.observe(this) { action ->
+            when (action) {
+                InsertExamViewModelAction.ShowFailDialog -> {
+                    Toast.makeText(this, "Falhou.", Toast.LENGTH_SHORT).show()
+                }
+                InsertExamViewModelAction.ShowSuccessDialog -> {
+                    Toast.makeText(this, "Sucesso!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(

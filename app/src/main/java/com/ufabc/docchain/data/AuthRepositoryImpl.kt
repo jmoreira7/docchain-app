@@ -27,12 +27,12 @@ class AuthRepositoryImpl : AuthRepositoryI {
         val result = authMechanism.signIn(email, password)
 
         return if (result.isSuccess) {
-            val userJSON = cloudDbMechanism.retrieveUserJSON(result.getOrElse { EMPTY_STRING })
-                .toString()
-            val user = UserMapper.fromJSON(userJSON)
-            val userName = user?.name ?: EMPTY_STRING
+//            val userJSON = cloudDbMechanism.retrieveUserJSON(result.getOrElse { EMPTY_STRING })
+//                .toString()
+//            val user = UserMapper.fromJSON(userJSON)
+//            val userName = user?.name ?: EMPTY_STRING
 
-            Result.success(userName)
+            Result.success(EMPTY_STRING)
         } else {
             Result.failure(Exception("User authentication fail."))
         }
