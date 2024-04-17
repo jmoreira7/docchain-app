@@ -1,5 +1,7 @@
 package com.ufabc.docchain.data
 
+import android.util.Log
+
 class AuthRepositoryImpl : AuthRepositoryI {
 
     private val authMechanism = FirebaseAuthMechanism()
@@ -27,12 +29,15 @@ class AuthRepositoryImpl : AuthRepositoryI {
         val result = authMechanism.signIn(email, password)
 
         return if (result.isSuccess) {
-//            val userJSON = cloudDbMechanism.retrieveUserJSON(result.getOrElse { EMPTY_STRING })
-//                .toString()
-//            val user = UserMapper.fromJSON(userJSON)
-//            val userName = user?.name ?: EMPTY_STRING
+            val userJSON = cloudDbMechanism.retrieveUserJSON(result.getOrElse { EMPTY_STRING })
+                .toString()
+            Log.d("DEBUG", "userJSON: [$userJSON]")
+            val user = UserMapper.fromJSON(userJSON)
+            Log.d("DEBUG", "User Kotlin Object: [$user]")
+            val userAuthUid = user?.authUid ?: EMPTY_STRING
+            Log.d("DEBUG", "userAuthUid: [$userAuthUid]")
 
-            Result.success(EMPTY_STRING)
+            Result.success(userAuthUid)
         } else {
             Result.failure(Exception("User authentication fail."))
         }

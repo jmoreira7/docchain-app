@@ -11,12 +11,18 @@ object UserMapper {
 
     fun fromJSON(json: String): User? {
         val gson = Gson()
+        val fixedJson = fixJsonFormat(json)
+        Log.d("DEBUG", "fixedJson: [$fixedJson]")
 
         try {
-            return gson.fromJson(json, User::class.java)
+            return gson.fromJson(fixedJson, User::class.java)
         } catch (e: JsonParseException) {
             Log.e("UserMapper", "Error mapping JSON to User object.", e)
         }
         return null
+    }
+
+    private fun fixJsonFormat(json: String): String {
+        return json.replace("=", ":").replace(Regex(":([^,}]*)"), ": \\\"\$1\\\"")
     }
 }

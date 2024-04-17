@@ -10,8 +10,6 @@ import com.ufabc.docchain.data.AuthRepositoryImpl
 import com.ufabc.docchain.presentation.ActivityStatus.LOADING
 import com.ufabc.docchain.presentation.ActivityStatus.NORMAL
 import com.ufabc.docchain.presentation.LoginViewModelAction.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel(), LoginEvent {
@@ -41,10 +39,10 @@ class LoginViewModel : ViewModel(), LoginEvent {
                 val result = authRepository.signIn(email, password)
 
                 if (result.isSuccess) {
-                    val loggedInUserName = result.getOrElse { UNKNOWN_USER_STRING }
-                    Log.d("DEBUG", "Logged in user name: [$loggedInUserName]")
+                    val userAuthUid = result.getOrElse { UNKNOWN_USER_STRING }
+                    Log.d("DEBUG", "Logged in user name: [$userAuthUid]")
 
-                    postAction(StartMenuActivity(loggedInUserName))
+                    postAction(StartMenuActivity(userAuthUid))
                 } else {
                     postAction(ShowFailAuthenticationToast)
                 }
