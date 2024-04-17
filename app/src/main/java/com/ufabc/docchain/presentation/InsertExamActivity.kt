@@ -7,6 +7,8 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.View.*
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -69,14 +71,55 @@ class InsertExamActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
+        viewModel.state.observe(this) { state ->
+            if (state.pdfIconVisible) {
+                binding.insertExamDataExamIcon.visibility = VISIBLE
+            } else {
+                binding.insertExamDataExamIcon.visibility = GONE
+            }
+
+            when (state.insertExamStatus) {
+                ActivityStatus.NORMAL -> {
+                    binding.insertExamDataTitle.visibility = VISIBLE
+                    binding.insertExamDataExamNameTextInput.visibility = VISIBLE
+                    binding.insertExamDataIdPatientTextInput.visibility = VISIBLE
+                    binding.insertExamDataIdDoctorTextInput.visibility = VISIBLE
+                    binding.insertExamDataDescriptionTextInput.visibility = VISIBLE
+                    binding.insertExamDataAddExamTitle.visibility = VISIBLE
+                    binding.insertExamDataAddExamButton.visibility = VISIBLE
+                    binding.insertExamDataApplyButton.visibility = VISIBLE
+                    binding.insertExamDataProgressBar.visibility = GONE
+                    binding.insertExamDataCancelButton.visibility = VISIBLE
+                }
+                ActivityStatus.LOADING -> {
+                    binding.insertExamDataTitle.visibility = GONE
+                    binding.insertExamDataExamNameTextInput.visibility = GONE
+                    binding.insertExamDataIdPatientTextInput.visibility = GONE
+                    binding.insertExamDataIdDoctorTextInput.visibility = GONE
+                    binding.insertExamDataDescriptionTextInput.visibility = GONE
+                    binding.insertExamDataAddExamTitle.visibility = GONE
+                    binding.insertExamDataAddExamButton.visibility = GONE
+                    binding.insertExamDataApplyButton.visibility = GONE
+                    binding.insertExamDataExamIcon.visibility = GONE
+                    binding.insertExamDataExamFileTitle.visibility = GONE
+                    binding.insertExamDataProgressBar.visibility = VISIBLE
+                    binding.insertExamDataCancelButton.visibility = GONE
+                }
+            }
+        }
+
         viewModel.action.observe(this) { action ->
             when (action) {
-                InsertExamViewModelAction.ShowFailDialog -> {
+                InsertExamViewModelAction.ShowFailToast -> {
                     Toast.makeText(this, "Falhou.", Toast.LENGTH_SHORT).show()
                 }
-                InsertExamViewModelAction.ShowSuccessDialog -> {
+                InsertExamViewModelAction.ShowSuccessToast -> {
                     Toast.makeText(this, "Sucesso!", Toast.LENGTH_SHORT).show()
+
+                    finish()
                 }
+
+                InsertExamViewModelAction.ShowEmptyInputFieldToast -> TODO()
             }
         }
     }
@@ -110,6 +153,7 @@ class InsertExamActivity : AppCompatActivity() {
 
         if (requestCode == REQUEST_CODE_PICK_PDF && resultCode == Activity.RESULT_OK) {
             val selectedPdfUri: Uri? = data?.data
+            viewModel.pdfFileSelected(selectedPdfUri)
 
             Log.d(LOG_TAG, "A pdf file was selected successfully. Uri: [$selectedPdfUri]")
         }

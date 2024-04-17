@@ -3,6 +3,7 @@ package com.ufabc.docchain.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ufabc.docchain.data.AuthRepositoryI
 import com.ufabc.docchain.data.AuthRepositoryImpl
 import com.ufabc.docchain.presentation.ActivityStatus.LOADING
@@ -63,7 +64,7 @@ class RegisterViewModel() : ViewModel(), RegisterEvent {
     private fun createUser(name: String, id: String, email: String, password: String) {
         updateRegisterStatus(LOADING)
 
-        CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             val success = authRepository.createUser(name, id, email, password)
 
             if (success) {

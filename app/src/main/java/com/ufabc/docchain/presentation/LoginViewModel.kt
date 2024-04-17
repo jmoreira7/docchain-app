@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ufabc.docchain.data.AuthRepositoryI
 import com.ufabc.docchain.data.AuthRepositoryImpl
 import com.ufabc.docchain.presentation.ActivityStatus.LOADING
@@ -36,7 +37,7 @@ class LoginViewModel : ViewModel(), LoginEvent {
 
         if (success) {
             updateLoginStatus(LOADING)
-            CoroutineScope(Dispatchers.Main).launch {
+            viewModelScope.launch {
                 val result = authRepository.signIn(email, password)
 
                 if (result.isSuccess) {

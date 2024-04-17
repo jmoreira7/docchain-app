@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import android.util.Base64
 import android.util.Log
+import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -25,6 +26,8 @@ class BlockchainRepositoryImpl : BlockchainRepositoryI {
     ): Boolean {
         val pdfBase64 = pdfUri?.let { convertPdfUriToBase64(context, it) } ?: EMPTY_STRING
 
+        Log.d(LOG_TAG, "Selected PDF Uri: [$pdfUri]")
+
         return withContext(Dispatchers.IO) {
             try {
                 val response = apiMechanism.api.postExam(
@@ -36,6 +39,10 @@ class BlockchainRepositoryImpl : BlockchainRepositoryI {
                         pdfBase64
                     )
                 )
+
+                Log.d(LOG_TAG, "Response code: [${response.code()}]")
+                Log.d(LOG_TAG, "Response error body: [${response.errorBody()?.string()}]")
+
                 if (response.isSuccessful) {
                     true
                 } else {
@@ -51,7 +58,6 @@ class BlockchainRepositoryImpl : BlockchainRepositoryI {
             }
         }
     }
-
 
     private fun convertPdfUriToBase64(context: Context, uri: Uri): String? {
         var inputStream: InputStream? = null

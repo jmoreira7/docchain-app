@@ -1,5 +1,8 @@
 package com.ufabc.docchain.presentation
 
-class InsertExamViewModelState {
-    var insertExamStatus: ActivityStatus = ActivityStatus.NORMAL
-}
+import com.ufabc.docchain.presentation.ActivityStatus.NORMAL
+
+data class InsertExamViewModelState(
+    var insertExamStatus: ActivityStatus = NORMAL,
+    var pdfIconVisible: Boolean = false
+)
