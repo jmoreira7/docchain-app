@@ -6,10 +6,12 @@ import android.content.Context
 interface BlockchainRepositoryI {
     suspend fun postExam(
         context: Context,
-        patientName: String,
         patientId: String,
         doctorId: String,
+        examName: String,
         description: String,
         pdfUri: Uri?
     ): Boolean
+
+    suspend fun getExams(context: Context, userId: String): List<Exam>
 }

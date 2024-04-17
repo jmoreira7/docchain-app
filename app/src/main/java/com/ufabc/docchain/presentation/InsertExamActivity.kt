@@ -61,11 +61,11 @@ class InsertExamActivity : AppCompatActivity() {
 
         binding.insertExamDataApplyButton.setOnClickListener {
             viewModel.sendExamData(
-                this,
-                "7777777",
-                "1231298",
-                "Primeiro exame",
-                "Hello World!"
+                context = this,
+                patientId = binding.insertExamDataIdPatientTextInputEditText.text.toString(),
+                doctorId = binding.insertExamDataIdDoctorTextInputEditText.text.toString(),
+                examName = binding.insertExamDataExamNameTextInputEditText.text.toString(),
+                description = binding.insertExamDataDescriptionTextInputEditText.text.toString()
             )
         }
     }

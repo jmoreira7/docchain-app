@@ -1,5 +1,6 @@
 package com.ufabc.docchain.presentation
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,12 +8,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ufabc.docchain.data.AuthRepositoryI
 import com.ufabc.docchain.data.AuthRepositoryImpl
+import com.ufabc.docchain.data.BlockchainRepositoryI
+import com.ufabc.docchain.data.BlockchainRepositoryImpl
 import com.ufabc.docchain.data.User
 import kotlinx.coroutines.launch
 
 class MenuViewModel: ViewModel(), MenuEvent {
 
     private val authRepository: AuthRepositoryI = AuthRepositoryImpl()
+
+    private val blockchainRepository: BlockchainRepositoryI = BlockchainRepositoryImpl()
 
     private val _state = MutableLiveData<MenuViewModelState>()
 
@@ -30,6 +35,15 @@ class MenuViewModel: ViewModel(), MenuEvent {
             }
 
             Log.d(LOG_TAG, "User Id set as [$userId]")
+        }
+    }
+
+    override fun consultExams(context: Context) {
+        Log.d(LOG_TAG, "Calling consultExams with userId: [$userId]")
+        viewModelScope.launch {
+            val examsList = blockchainRepository.getExams(context, userId)
+
+            Log.d(LOG_TAG, "Retrieved exams list: [$examsList]")
         }
     }
 

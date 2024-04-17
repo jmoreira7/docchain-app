@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.Uri
 import android.util.Base64
 import android.util.Log
-import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -18,9 +17,9 @@ class BlockchainRepositoryImpl : BlockchainRepositoryI {
 
     override suspend fun postExam(
         context: Context,
-        patientName: String,
         patientId: String,
         doctorId: String,
+        examName: String,
         description: String,
         pdfUri: Uri?
     ): Boolean {
@@ -32,16 +31,17 @@ class BlockchainRepositoryImpl : BlockchainRepositoryI {
             try {
                 val response = apiMechanism.api.postExam(
                     RawExam(
-                        patientName,
-                        patientId,
-                        doctorId,
-                        description,
-                        pdfBase64
+                        patientId = patientId,
+                        doctorId = doctorId,
+                        examName = examName,
+                        description = description,
+                        pdfBase64 = pdfBase64
                     )
                 )
 
-                Log.d(LOG_TAG, "Response code: [${response.code()}]")
-                Log.d(LOG_TAG, "Response error body: [${response.errorBody()?.string()}]")
+                Log.d(LOG_TAG, "postExam response code: [${response.code()}]")
+                Log.d(LOG_TAG, "postExam error body: [${response.errorBody()?.string()}]")
+                Log.d(LOG_TAG, "postExam body data: [${response.body()}]")
 
                 if (response.isSuccessful) {
                     true
@@ -56,6 +56,42 @@ class BlockchainRepositoryImpl : BlockchainRepositoryI {
                 Log.e(LOG_TAG, "HttpException, unexpected response.", e)
                 false
             }
+        }
+    }
+
+    override suspend fun getExams(context: Context, userId: String): List<Exam> {
+        return withContext(Dispatchers.IO) {
+            var examsList: List<Exam> = listOf()
+
+            try {
+                val response = apiMechanism.api.getExams(userId)
+
+                if (response.isSuccessful) {
+                    examsList = response.body()?.data?.blocks?.map { item ->
+                        if (item.examData.pdfBase64.isNotEmpty()) {
+                            ExamMapper.fromRawExam(context, item.examData)
+                        } else {
+                            Exam(
+                                patientId = item.examData.examName,
+                                doctorId = item.examData.examName,
+                                patientName = item.examData.examName,
+                                description = item.examData.description,
+                                pdfUri = null
+                            )
+                        }
+                    } ?: listOf()
+                }
+
+                Log.d(LOG_TAG, "Response code: [${response.code()}]")
+                Log.d(LOG_TAG, "Response error body: [${response.errorBody()?.string()}]")
+
+                return@withContext examsList
+            } catch (e: IOException) {
+                Log.e(LOG_TAG, "Failed with IOException.", e)
+            } catch (e: HttpException) {
+                Log.e(LOG_TAG, "HttpException, unexpected response.", e)
+            }
+            listOf()
         }
     }
 

@@ -62,12 +62,12 @@ class InsertExamViewModel : ViewModel(), InsertExamEvent {
             updateLoginStatus(LOADING)
             viewModelScope.launch {
                 val result = blockchainRepository.postExam(
-                    context,
-                    patientId,
-                    doctorId,
-                    examName,
-                    description,
-                    pdfFileSelected
+                    context = context,
+                    patientId = patientId,
+                    doctorId = doctorId,
+                    examName = examName,
+                    description = description,
+                    pdfUri = pdfFileSelected
                 )
 
                 if (result) {

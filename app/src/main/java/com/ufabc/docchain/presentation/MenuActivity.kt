@@ -32,7 +32,7 @@ class MenuActivity : AppCompatActivity() {
         }
 
         binding.menuConsultExamDataButton.setOnClickListener {
-
+            viewModel.consultExams(this)
         }
     }
 

@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit
 class FastApiMechanism {
 
     private val okHttpClient = OkHttpClient.Builder()
-        .connectTimeout(60, TimeUnit.SECONDS)
-        .readTimeout(60, TimeUnit.SECONDS)
-        .connectTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(1, TimeUnit.HOURS)
+        .readTimeout(1, TimeUnit.HOURS)
+        .connectTimeout(1, TimeUnit.HOURS)
         .build()
 
     val api: FastApi by lazy {
