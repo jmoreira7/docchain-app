@@ -15,6 +15,8 @@ class MenuActivity : AppCompatActivity() {
 
     private lateinit var binding: MenuBinding
 
+    private var userId = EMPTY_STRING
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -22,6 +24,13 @@ class MenuActivity : AppCompatActivity() {
 
         retrieveExtra()
         setupViews()
+        setupViewModel()
+    }
+
+    private fun setupViewModel() {
+        viewModel.state.observe(this) { state ->
+            this.userId = state.userId
+        }
     }
 
     private fun setupViews() {
@@ -33,6 +42,7 @@ class MenuActivity : AppCompatActivity() {
 
         binding.menuConsultExamDataButton.setOnClickListener {
             val intent = Intent(this, ExamListActivity::class.java)
+            intent.putExtra("EXAM_LIST_ACTIVITY_INTENT_TAG", userId)
             startActivity(intent)
         }
     }
@@ -43,5 +53,9 @@ class MenuActivity : AppCompatActivity() {
         userAuthId?.let {
             viewModel.setUserAuthUid(it)
         }
+    }
+
+    companion object {
+        private const val EMPTY_STRING = ""
     }
 }
