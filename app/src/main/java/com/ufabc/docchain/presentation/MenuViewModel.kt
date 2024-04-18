@@ -33,14 +33,12 @@ class MenuViewModel: ViewModel(), MenuEvent {
             user?.let {
                 userId = it.id
 
-                val currentState = _state.value
-                val newState = currentState?.copy(userId = userId)
+                val currentState = _state.value ?: MenuViewModelState()
+                val newState = currentState.copy(userId = userId)
                 postState(newState)
             }
 
             Log.d(LOG_TAG, "User Id set as [$userId]")
-
-
         }
     }
 

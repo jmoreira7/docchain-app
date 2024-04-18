@@ -64,7 +64,11 @@ class BlockchainRepositoryImpl : BlockchainRepositoryI {
             var examsList: List<Exam> = listOf()
 
             try {
+                Log.d("DEBUG", "getExams userId: [$userId]")
                 val response = apiMechanism.api.getExams(userId)
+
+                Log.d(LOG_TAG, "getExam response code: [${response.code()}]")
+                Log.d(LOG_TAG, "getExam error body: [${response.errorBody()?.string()}]")
 
                 if (response.isSuccessful) {
                     examsList = response.body()?.data?.blocks?.map { item ->

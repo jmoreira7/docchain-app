@@ -2,6 +2,7 @@ package com.ufabc.docchain.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -30,6 +31,7 @@ class MenuActivity : AppCompatActivity() {
     private fun setupViewModel() {
         viewModel.state.observe(this) { state ->
             this.userId = state.userId
+            Log.d("DEBUG", "MenuActivity userId updated: [${state.userId}]")
         }
     }
 
@@ -42,6 +44,7 @@ class MenuActivity : AppCompatActivity() {
 
         binding.menuConsultExamDataButton.setOnClickListener {
             val intent = Intent(this, ExamListActivity::class.java)
+            Log.d("DEBUG", "MenuActivity userId: [$userId]")
             intent.putExtra("EXAM_LIST_ACTIVITY_INTENT_TAG", userId)
             startActivity(intent)
         }
@@ -53,6 +56,10 @@ class MenuActivity : AppCompatActivity() {
         userAuthId?.let {
             viewModel.setUserAuthUid(it)
         }
+    }
+
+    fun updateUserId(userId: String) {
+        this.userId = userId
     }
 
     companion object {

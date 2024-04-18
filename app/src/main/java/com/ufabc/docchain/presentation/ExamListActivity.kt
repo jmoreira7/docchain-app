@@ -31,6 +31,7 @@ class ExamListActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.exam_list)
 
+        retrieveExtra()
 
         val exams = listOf<Exam>()
 
@@ -40,6 +41,7 @@ class ExamListActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         lifecycleScope.launch {
+            Log.d("DEBUG", "ExamListActivity userId: [$userId]")
             val updatedExams = blockchainRepository.getExams(this@ExamListActivity, userId)
             Log.d("DEBUG", "updatedExams: [$updatedExams]")
             adapter.updateExams(updatedExams)

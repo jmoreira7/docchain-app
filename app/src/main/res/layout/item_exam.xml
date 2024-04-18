@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:background="@drawable/item_background"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -11,11 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/item_background"
         android:ellipsize="end"
+        android:fontFamily="@font/jura_bold"
         android:maxLines="1"
-        android:padding="10dp"
         android:text="Nome do Exame: "
         android:textSize="18sp" />
 
@@ -24,11 +26,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/item_background"
         android:ellipsize="end"
+        android:fontFamily="@font/jura_bold"
         android:maxLines="1"
-        android:padding="10dp"
         android:text="Id do Paciente: "
         android:textSize="16sp" />
 
@@ -37,11 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/item_background"
         android:ellipsize="end"
+        android:fontFamily="@font/jura_bold"
         android:maxLines="1"
-        android:padding="10dp"
         android:text="Id do médico: "
         android:textSize="16sp" />
 
@@ -50,11 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/item_background"
         android:ellipsize="end"
+        android:fontFamily="@font/jura_bold"
         android:maxLines="1"
-        android:padding="10dp"
         android:text="Descrição: "
         android:textSize="16sp" />
 
