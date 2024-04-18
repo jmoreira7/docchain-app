@@ -72,9 +72,9 @@ class BlockchainRepositoryImpl : BlockchainRepositoryI {
                             ExamMapper.fromRawExam(context, item.examData)
                         } else {
                             Exam(
-                                patientId = item.examData.examName,
-                                doctorId = item.examData.examName,
-                                patientName = item.examData.examName,
+                                patientId = item.examData.patientId,
+                                doctorId = item.examData.doctorId,
+                                examName = item.examData.examName,
                                 description = item.examData.description,
                                 pdfUri = null
                             )

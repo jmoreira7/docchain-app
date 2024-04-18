@@ -32,7 +32,8 @@ class MenuActivity : AppCompatActivity() {
         }
 
         binding.menuConsultExamDataButton.setOnClickListener {
-            viewModel.consultExams(this)
+            val intent = Intent(this, ExamListActivity::class.java)
+            startActivity(intent)
         }
     }
 

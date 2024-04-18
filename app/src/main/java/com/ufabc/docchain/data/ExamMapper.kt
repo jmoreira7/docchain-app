@@ -17,7 +17,7 @@ object ExamMapper {
         val uri = getFileUri(context, file)
 
         return Exam(
-            patientName = rawExam.examName,
+            examName = rawExam.examName,
             patientId = rawExam.examName,
             doctorId = rawExam.examName,
             description = rawExam.description,
