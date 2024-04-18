@@ -18,19 +18,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.ExamListActivity"
+            android:name=".presentation.examlist.ExamListActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.InsertExamActivity"
+            android:name=".presentation.insertexam.InsertExamActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.MenuActivity"
+            android:name=".presentation.menu.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.RegisterActivity"
+            android:name=".presentation.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.LoginActivity"
+            android:name=".presentation.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
