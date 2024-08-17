@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "211423240963",
+    "project_id": "login-docchain",
+    "storage_bucket": "login-docchain.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211423240963:android:19dc3cb7e8c8c98d597f36",
+        "android_client_info": {
+          "package_name": "com.ufabc.docchain"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0idviGO6OFOfEfTE8I1jDoFoxxEV_eLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

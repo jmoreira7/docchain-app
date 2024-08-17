@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/insert_exam_data_padding">
+
+        <TextView
+            android:id="@+id/insert_exam_data_title"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/insert_exam_data_title_height"
+            android:fontFamily="@font/jura_bold"
+            android:gravity="center"
+            android:text="@string/insert_exam_data_title_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/insert_exam_data_title_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/insert_exam_data_exam_name_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_title"
+            app:layout_constraintVertical_bias="0.05">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/insert_exam_data_exam_name_text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jura_bold"
+                android:hint="@string/insert_exam_data_exam_name_text_input_edit_text_hint"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColorHint="@color/star_dust" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/insert_exam_data_id_patient_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/insert_exam_data_id_patient_text_input_margin_top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_exam_name_text_input"
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/insert_exam_data_id_patient_text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jura_bold"
+                android:hint="@string/insert_exam_data_id_patient_text_input_edit_text_hint"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColorHint="@color/star_dust" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/insert_exam_data_id_doctor_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/insert_exam_data_id_doctor_text_input_margin_top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_id_patient_text_input"
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/insert_exam_data_id_doctor_text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jura_bold"
+                android:hint="@string/insert_exam_data_id_doctor_text_input_hint"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColorHint="@color/star_dust" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/insert_exam_data_description_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="@dimen/insert_exam_data_id_doctor_text_input_margin_top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_id_doctor_text_input"
+            app:layout_constraintVertical_bias="0">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/insert_exam_data_description_text_input_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:fontFamily="@font/jura_bold"
+                android:gravity="top"
+                android:hint="@string/insert_exam_data_description_text_input_edit_text_hint"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:textColorHint="@color/star_dust" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/insert_exam_data_add_exam_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jura_bold"
+            android:text="@string/insert_exam_data_add_exam_title_text"
+            android:textSize="@dimen/insert_exam_data_add_exam_title_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_description_text_input"
+            app:layout_constraintVertical_bias="0.05" />
+
+        <ImageButton
+            android:id="@+id/insert_exam_data_add_exam_button"
+            android:layout_width="@dimen/insert_exam_data_add_exam_button_width"
+            android:layout_height="@dimen/insert_exam_data_add_exam_button_height"
+            android:background="@drawable/button_circle_background"
+            android:contentDescription="@string/insert_exam_data_add_exam_button_content_description"
+            android:gravity="center"
+            android:src="@drawable/add_img"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_add_exam_title"
+            app:layout_constraintVertical_bias="0.05" />
+
+        <ImageView
+            android:id="@+id/insert_exam_data_exam_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/insert_exam_data_exam_icon_content_description"
+            android:src="@drawable/ic_exam"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintStart_toEndOf="@id/insert_exam_data_add_exam_button"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_add_exam_title"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <TextView
+            android:id="@+id/insert_exam_data_exam_file_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jura_bold"
+            android:textSize="@dimen/insert_exam_data_exam_file_title_text"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/insert_exam_data_exam_icon"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_exam_icon"
+            app:layout_constraintVertical_bias="0"
+            tools:text="Yee.pdf" />
+
+        <TextView
+            android:id="@+id/insert_exam_data_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jura_bold"
+            android:text="@string/insert_exam_data_back_button_text"
+            android:textColor="@color/warm_blue"
+            android:textSize="@dimen/insert_exam_data_cancel_button_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_exam_file_title"
+            app:layout_constraintVertical_bias="1" />
+
+        <TextView
+            android:id="@+id/insert_exam_data_apply_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jura_bold"
+            android:text="@string/insert_exam_data_apply_button_text"
+            android:textColor="@color/warm_blue"
+            android:textSize="@dimen/insert_exam_data_apply_button_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/insert_exam_data_exam_file_title"
+            app:layout_constraintVertical_bias="1" />
+
+        <ProgressBar
+            android:id="@+id/insert_exam_data_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/warm_blue"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

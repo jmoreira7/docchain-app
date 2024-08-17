@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">DocChain</string>
+    <string name="title_container_title_text">DocChain</string>
+    <string name="login_login_title_text">Acesso</string>
+    <string name="register_register_title_text">Registro</string>
+    <string name="register_name_text">Nome</string>
+    <string name="register_id_text">CPF / RG / Passaporte</string>
+    <string name="register_email_text">E-mail</string>
+    <string name="register_password_text">Senha</string>
+    <string name="register_register_button_text">Enviar</string>
+    <string name="login_login_button_text">Entrar</string>
+    <string name="login_user_text_input_edit_text_hint">E-mail</string>
+    <string name="login_password_text_input_edit_text_hint">Senha</string>
+    <string name="login_register_question_text">Ainda não tem uma conta?</string>
+    <string name="login_register_button_text">Registre-se</string>
+    <string name="register_back_button_text">Voltar</string>
+    <string name="login_activity_email_validation_empty_message">Insira um e-mail.</string>
+    <string name="login_activity_password_validation_empty_message">Insira uma senha.</string>
+    <string name="login_activity_fail_authentication_text">Autenticação de usuário falhou.</string>
+    <string name="menu_activity_logged_in_user_text">Conectado como %1$s.</string>
+    <string name="login_activity_authentication_success">Autenticado com sucesso!</string>
+    <string name="menu_insert_exam_data_button_text">Inserir Dados de Exame</string>
+    <string name="menu_consult_exam_data_button_text">Consultar Exame</string>
+    <string name="insert_exam_data_title_text">Insira os dados do exame</string>
+    <string name="insert_exam_data_exam_name_text_input_edit_text_hint">Nome do exame</string>
+    <string name="insert_exam_data_id_patient_text_input_edit_text_hint">Id do paciente (CPF, RG)</string>
+    <string name="insert_exam_data_id_doctor_text_input_hint">Id do médico (CRM)</string>
+    <string name="insert_exam_data_description_text_input_edit_text_hint">Descrição</string>
+    <string name="insert_exam_data_add_exam_title_text">Anexar arquivos de exame</string>
+    <string name="insert_exam_data_exam_icon_content_description">Exam icon</string>
+    <string name="insert_exam_data_add_exam_button_content_description">Add button</string>
+    <string name="insert_exam_data_back_button_text">Voltar</string>
+    <string name="insert_exam_data_apply_button_text">Enviar</string>
 </resources>
